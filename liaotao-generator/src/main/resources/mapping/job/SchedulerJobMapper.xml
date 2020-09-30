@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.generator.job.mapper.SchedulerJobMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.generator.job.entity.SchedulerJob">
+        <id column="job_id" property="jobId" />
+        <result column="task_name" property="taskName" />
+        <result column="task_group" property="taskGroup" />
+        <result column="execute_class" property="executeClass" />
+        <result column="cron" property="cron" />
+        <result column="desc" property="desc" />
+        <result column="state" property="state" />
+        <result column="create_on" property="createOn" />
+        <result column="create_by" property="createBy" />
+        <result column="modified_on" property="modifiedOn" />
+        <result column="modified_by" property="modifiedBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        job_id, task_name, task_group, execute_class, cron, desc, state, create_on, create_by, modified_on, modified_by
+    </sql>
+
+</mapper>
