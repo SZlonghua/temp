@@ -5,6 +5,12 @@ import ${package.Entity}.${entity};
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
 import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.commom.model.PageUtil;
+import com.example.commom.model.Query;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * <p>
@@ -21,6 +27,20 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 }
 <#else>
 public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+    @Override
+    public PageUtil<${entity}> list(Query query) {
+        Page<${entity}> page = new Page<>(query.getPage(), query.getSize());
 
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
+        if(StringUtils.isNotEmpty(query.getDirect())&&
+            StringUtils.isNotEmpty(query.getOrder())){
+            queryWrapper.orderBy(true,"ASC".equals(query.getDirect().toUpperCase()),query.getOrder());
+        }else {
+            queryWrapper.orderByDesc("modifiedOn");
+        }
+
+        IPage<${entity}> pageList = page(page, queryWrapper);
+        return PageUtil.of(pageList.getRecords(),pageList.getTotal(),pageList.getSize(),pageList.getCurrent());
+    }
 }
 </#if>

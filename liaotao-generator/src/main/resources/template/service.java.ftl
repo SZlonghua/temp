@@ -2,6 +2,8 @@ package ${package.Service};
 
 import ${package.Entity}.${entity};
 import com.example.commom.service.BaseService;
+import com.example.commom.model.PageUtil;
+import com.example.commom.model.Query;
 
 /**
  * <p>
@@ -15,6 +17,12 @@ import com.example.commom.service.BaseService;
 interface ${table.serviceName} : ${superServiceClass}<${entity}>
 <#else>
 public interface ${table.serviceName} extends BaseService<${entity}> {
-
+    /**
+    * 分页查询
+    * @param query
+    *          查询条件
+    * @return  分页信息
+    */
+    PageUtil<${entity}> list(Query query);
 }
 </#if>

@@ -16,6 +16,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/job/schedulerJob")
 public class SchedulerJobController {
 
-
-
 }

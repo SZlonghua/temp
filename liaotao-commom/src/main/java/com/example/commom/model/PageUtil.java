@@ -14,13 +14,13 @@ public class PageUtil<T> implements Serializable {
     private long totalCount;
     //每页记录数
     @ApiModelProperty("每页记录数")
-    private int pageSize;
+    private long pageSize;
     //总页数
     @ApiModelProperty("总页数")
-    private int totalPage;
+    private long totalPage;
     //当前页数
     @ApiModelProperty("当前页数")
-    private int currPage;
+    private long currPage;
     //列表数据
     @ApiModelProperty("列表数据")
     private List<T> data;
@@ -32,7 +32,7 @@ public class PageUtil<T> implements Serializable {
      * @param pageSize    每页记录数
      * @param currPage    当前页数
      */
-    public PageUtil(List<T> data, long totalCount, int pageSize, int currPage) {
+    public PageUtil(List<T> data, long totalCount, long pageSize, long currPage) {
         this.data = data;
         this.totalCount = totalCount;
         this.pageSize = pageSize;
@@ -48,27 +48,27 @@ public class PageUtil<T> implements Serializable {
         this.totalCount = totalCount;
     }
 
-    public int getPageSize() {
+    public long getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(long pageSize) {
         this.pageSize = pageSize;
     }
 
-    public int getTotalPage() {
+    public long getTotalPage() {
         return totalPage;
     }
 
-    public void setTotalPage(int totalPage) {
+    public void setTotalPage(long totalPage) {
         this.totalPage = totalPage;
     }
 
-    public int getCurrPage() {
+    public long getCurrPage() {
         return currPage;
     }
 
-    public void setCurrPage(int currPage) {
+    public void setCurrPage(long currPage) {
         this.currPage = currPage;
     }
 
@@ -80,7 +80,7 @@ public class PageUtil<T> implements Serializable {
         this.data = data;
     }
 
-    public  static <T> PageUtil<T> of(List<T> data, long totalCount, int pageSize, int currPage){
+    public  static <T> PageUtil<T> of(List<T> data, long totalCount, long pageSize, long currPage){
         return new PageUtil<>(data, totalCount, pageSize, currPage);
     }
 

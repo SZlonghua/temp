@@ -2,6 +2,8 @@ package com.example.generator.job.service;
 
 import com.example.generator.job.entity.SchedulerJob;
 import com.example.commom.service.BaseService;
+import com.example.commom.model.PageUtil;
+import com.example.commom.model.Query;
 
 /**
  * <p>
@@ -12,5 +14,11 @@ import com.example.commom.service.BaseService;
  * @since 2020-09-30
  */
 public interface SchedulerJobService extends BaseService<SchedulerJob> {
-
+    /**
+    * 分页查询
+    * @param query
+    *          查询条件
+    * @return  分页信息
+    */
+    PageUtil<SchedulerJob> list(Query query);
 }

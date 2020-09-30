@@ -31,7 +31,7 @@ public class CodeGeneratorUtil {
     //文件覆盖:true 覆盖原有文件 false 不覆盖原有文件
     private final static boolean fileOverride = true;
     //设置数据库url
-    private final static String url = "jdbc:mysql://192.168.2.36:3306/liaotao-eaxm?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC";
+    private final static String url = "jdbc:mysql://127.0.0.1:3306/liaotao-eaxm?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC";
     //设置数据库驱动
     //private final static String driverName = "org.mariadb.jdbc.Driver";
     private final static String driverName = "com.mysql.jdbc.Driver";
