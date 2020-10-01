@@ -11,6 +11,7 @@
     <artifactId>liaotao-generator</artifactId>
     <version>${parent.version}</version>
     <name>liaotao-generator</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>

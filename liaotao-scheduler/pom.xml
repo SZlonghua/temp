@@ -11,6 +11,7 @@
     <artifactId>liaotao-scheduler</artifactId>
     <version>${parent.version}</version>
     <name>liaotao-scheduler</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>

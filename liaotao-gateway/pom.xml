@@ -11,6 +11,7 @@
     <artifactId>liaotao-gateway</artifactId>
     <version>${parent.version}</version>
     <name>liaotao-gateway</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
