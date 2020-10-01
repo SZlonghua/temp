@@ -27,7 +27,6 @@ public class SchedulerJobController extends BaseController {
 
     @RequestMapping("list")
     public R<PageUtil<SchedulerJob>> list(Query query) {
-        System.out.println("kkkkkkkkkkkkkkkkkkkkkk");
         return R.ok(schedulerJobService.list(query));
     }
 }
