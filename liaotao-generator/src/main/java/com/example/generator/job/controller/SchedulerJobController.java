@@ -2,6 +2,9 @@ package com.example.generator.job.controller;
 
 
 import com.example.commom.controller.BaseController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +24,13 @@ import com.example.commom.model.Query;
  */
 @RestController
 @RequestMapping("/job/schedulerJob")
+@Api(tags = {"定时调度"})
 public class SchedulerJobController extends BaseController {
     @Autowired
     SchedulerJobService schedulerJobService;
 
-    @RequestMapping("list")
+    @GetMapping("list")
+    @ApiOperation(value = "列表")
     public R<PageUtil<SchedulerJob>> list(Query query) {
         return R.ok(schedulerJobService.list(query));
     }
