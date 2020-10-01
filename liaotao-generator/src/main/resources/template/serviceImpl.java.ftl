@@ -36,7 +36,7 @@ public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName
             StringUtils.isNotEmpty(query.getOrder())){
             queryWrapper.orderBy(true,"ASC".equals(query.getDirect().toUpperCase()),query.getOrder());
         }else {
-            queryWrapper.orderByDesc("modifiedOn");
+            queryWrapper.orderByDesc("modified_on");
         }
 
         IPage<${entity}> pageList = page(page, queryWrapper);

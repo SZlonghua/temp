@@ -10,6 +10,13 @@ import org.springframework.stereotype.Controller;
 <#if superControllerClassPackage??>
 import ${superControllerClassPackage};
 </#if>
+import org.springframework.beans.factory.annotation.Autowired;
+import ${package.Service}.${table.serviceName};
+import com.example.commom.model.R;
+import com.example.commom.model.PageUtil;
+import ${package.Entity}.${entity};
+import com.example.commom.model.Query;
+import com.example.commom.controller.BaseController;
 
 /**
  * <p>
@@ -31,8 +38,14 @@ class ${table.controllerName}<#if superControllerClass??> : ${superControllerCla
 <#if superControllerClass??>
 public class ${table.controllerName} extends ${superControllerClass} {
 <#else>
-public class ${table.controllerName} {
+public class ${table.controllerName} extends BaseController {
 </#if>
+    @Autowired
+    ${table.serviceName} ${table.serviceName?uncap_first};
 
+    @RequestMapping("list")
+    public R<PageUtil<SchedulerJob>> list(Query query) {
+        return R.ok(${table.serviceName?uncap_first}.list(query));
+    }
 }
 </#if>

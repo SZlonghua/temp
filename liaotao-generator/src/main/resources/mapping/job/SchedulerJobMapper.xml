@@ -9,7 +9,7 @@
         <result column="task_group" property="taskGroup" />
         <result column="execute_class" property="executeClass" />
         <result column="cron" property="cron" />
-        <result column="desc" property="desc" />
+        <result column="description" property="description" />
         <result column="state" property="state" />
         <result column="create_on" property="createOn" />
         <result column="create_by" property="createBy" />
@@ -19,7 +19,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        job_id, task_name, task_group, execute_class, cron, desc, state, create_on, create_by, modified_on, modified_by
+        job_id, task_name, task_group, execute_class, cron, description, state, create_on, create_by, modified_on, modified_by
     </sql>
 
 </mapper>

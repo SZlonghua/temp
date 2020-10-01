@@ -14,7 +14,7 @@ import com.example.commom.entity.BaseEntity;
  * </p>
  *
  * @author liaotao
- * @since 2020-09-30
+ * @since 2020-10-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -34,7 +34,7 @@ public class SchedulerJob extends BaseEntity implements Serializable {
     @ApiModelProperty(value = "cron表达式")
     private String cron;
     @ApiModelProperty(value = "描述")
-    private String desc;
+    private String description;
     @ApiModelProperty(value = "状态")
     private String state;
 

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(value = "com.example.generator")
+@MapperScan(value = "com.example.generator.*.mapper")
 public class LiaotaoGeneratorApplication {
 
     public static void main(String[] args) {

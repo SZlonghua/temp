@@ -18,7 +18,7 @@ import org.apache.commons.lang.StringUtils;
  * </p>
  *
  * @author liaotao
- * @since 2020-09-30
+ * @since 2020-10-01
  */
 @Service
 public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper, SchedulerJob> implements SchedulerJobService {
@@ -31,7 +31,7 @@ public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper,
             StringUtils.isNotEmpty(query.getOrder())){
             queryWrapper.orderBy(true,"ASC".equals(query.getDirect().toUpperCase()),query.getOrder());
         }else {
-            queryWrapper.orderByDesc("modifiedOn");
+            queryWrapper.orderByDesc("modified_on");
         }
 
         IPage<SchedulerJob> pageList = page(page, queryWrapper);
