@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-01
+ * @since 2020-10-02
  */
 public interface SchedulerJobMapper extends BaseMapper<SchedulerJob> {
 

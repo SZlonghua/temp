@@ -17,6 +17,9 @@ import com.example.commom.model.PageUtil;
 import ${package.Entity}.${entity};
 import com.example.commom.model.Query;
 import com.example.commom.controller.BaseController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * <p>
@@ -38,12 +41,14 @@ class ${table.controllerName}<#if superControllerClass??> : ${superControllerCla
 <#if superControllerClass??>
 public class ${table.controllerName} extends ${superControllerClass} {
 <#else>
+@Api(tags = {"${table.comment!}"})
 public class ${table.controllerName} extends BaseController {
 </#if>
     @Autowired
     ${table.serviceName} ${table.serviceName?uncap_first};
 
-    @RequestMapping("list")
+    @GetMapping("list")
+    @ApiOperation(value = "列表")
     public R<PageUtil<SchedulerJob>> list(Query query) {
         return R.ok(${table.serviceName?uncap_first}.list(query));
     }

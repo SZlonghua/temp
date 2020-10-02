@@ -11,7 +11,7 @@ import com.example.commom.model.Query;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-01
+ * @since 2020-10-02
  */
 public interface SchedulerJobService extends BaseService<SchedulerJob> {
     /**

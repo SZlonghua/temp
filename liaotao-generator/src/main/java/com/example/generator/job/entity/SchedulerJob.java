@@ -14,7 +14,7 @@ import com.example.commom.entity.BaseEntity;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-01
+ * @since 2020-10-02
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
