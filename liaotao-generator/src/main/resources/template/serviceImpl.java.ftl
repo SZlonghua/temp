@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.commom.model.PageUtil;
 import com.example.commom.model.Query;
 import org.apache.commons.lang.StringUtils;
+import java.util.List;
 
 /**
  * <p>
@@ -46,6 +47,21 @@ public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName
     @Override
     public ${entity} info(String id) {
         return getById(id);
+    }
+
+    @Override
+    public Boolean saveEntity(${entity} ${entity?uncap_first}) {
+        return save(${entity?uncap_first});
+    }
+
+    @Override
+    public Boolean updateEntity(${entity} ${entity?uncap_first}) {
+        return saveOrUpdate(${entity?uncap_first});
+    }
+
+    @Override
+    public Boolean delete(List<String> ids) {
+        return removeByIds(ids);
     }
 }
 </#if>

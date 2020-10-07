@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.commom.model.PageUtil;
 import com.example.commom.model.Query;
 import org.apache.commons.lang.StringUtils;
+import java.util.List;
 
 /**
  * <p>
@@ -41,5 +42,20 @@ public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper,
     @Override
     public SchedulerJob info(String id) {
         return getById(id);
+    }
+
+    @Override
+    public Boolean saveEntity(SchedulerJob schedulerJob) {
+        return save(schedulerJob);
+    }
+
+    @Override
+    public Boolean updateEntity(SchedulerJob schedulerJob) {
+        return saveOrUpdate(schedulerJob);
+    }
+
+    @Override
+    public Boolean delete(List<String> ids) {
+        return removeByIds(ids);
     }
 }

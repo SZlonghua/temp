@@ -1,16 +1,13 @@
 package ${package.Controller};
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
 <#if restControllerStyle>
-import org.springframework.web.bind.annotation.RestController;
 <#else>
 import org.springframework.stereotype.Controller;
 </#if>
 <#if superControllerClassPackage??>
 import ${superControllerClassPackage};
 </#if>
-import org.springframework.beans.factory.annotation.Autowired;
 import ${package.Service}.${table.serviceName};
 import com.example.commom.model.R;
 import com.example.commom.model.PageUtil;
@@ -19,10 +16,11 @@ import com.example.commom.model.Query;
 import com.example.commom.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
 /**
  * <p>
@@ -61,8 +59,29 @@ public class ${table.controllerName} extends BaseController {
     @ApiImplicitParams(value = {
         @ApiImplicitParam(name = "id",value = "主键",required = true,dataType = "String")
     })
-    public R<SchedulerJob> info(@PathVariable(value = "id") String id) {
+    public R<${entity}> info(@PathVariable(value = "id") String id) {
         return R.ok(${table.serviceName?uncap_first}.info(id));
+    }
+
+    @PostMapping("/save")
+    @ApiOperation(value = "保存")
+    public R<Boolean> save(@RequestBody ${entity} ${entity?uncap_first}){
+        return R.ok(${table.serviceName?uncap_first}.saveEntity(${entity?uncap_first}));
+    }
+
+    @PostMapping("/update")
+    @ApiOperation(value = "更新")
+    public R<Boolean> update(@RequestBody ${entity} ${entity?uncap_first}){
+        return R.ok(${table.serviceName?uncap_first}.updateEntity(${entity?uncap_first}));
+    }
+
+    @PostMapping("/delete")
+    @ApiOperation(value = "删除")
+    @ApiImplicitParams(value = {
+        @ApiImplicitParam(name = "ids",value = "主键",required = true,dataType = "String",allowMultiple = true)
+    })
+    public R<Boolean> delete(@RequestBody List<String> ids){
+        return R.ok(schedulerJobService.delete(ids));
     }
 }
 </#if>

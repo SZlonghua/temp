@@ -1,9 +1,6 @@
 package com.example.generator.job.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.example.generator.job.service.SchedulerJobService;
 import com.example.commom.model.R;
 import com.example.commom.model.PageUtil;
@@ -12,10 +9,11 @@ import com.example.commom.model.Query;
 import com.example.commom.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
 /**
  * <p>
@@ -45,5 +43,26 @@ public class SchedulerJobController extends BaseController {
     })
     public R<SchedulerJob> info(@PathVariable(value = "id") String id) {
         return R.ok(schedulerJobService.info(id));
+    }
+
+    @PostMapping("/save")
+    @ApiOperation(value = "保存")
+    public R<Boolean> save(@RequestBody SchedulerJob schedulerJob){
+        return R.ok(schedulerJobService.saveEntity(schedulerJob));
+    }
+
+    @PostMapping("/update")
+    @ApiOperation(value = "更新")
+    public R<Boolean> update(@RequestBody SchedulerJob schedulerJob){
+        return R.ok(schedulerJobService.updateEntity(schedulerJob));
+    }
+
+    @PostMapping("/delete")
+    @ApiOperation(value = "删除")
+    @ApiImplicitParams(value = {
+        @ApiImplicitParam(name = "ids",value = "主键",required = true,dataType = "String",allowMultiple = true)
+    })
+    public R<Boolean> delete(@RequestBody List<String> ids){
+        return R.ok(schedulerJobService.delete(ids));
     }
 }

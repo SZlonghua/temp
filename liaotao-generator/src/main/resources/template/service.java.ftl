@@ -4,7 +4,7 @@ import ${package.Entity}.${entity};
 import com.example.commom.service.BaseService;
 import com.example.commom.model.PageUtil;
 import com.example.commom.model.Query;
-
+import java.util.List;
 /**
  * <p>
  * ${table.comment!} 服务类
@@ -32,5 +32,29 @@ public interface ${table.serviceName} extends BaseService<${entity}> {
     * @return  详情
     */
     ${entity} info(String id);
+
+    /**
+    * 保存
+    * @param ${entity?uncap_first}
+    *          实体
+    * @return  是否成功
+    */
+    Boolean saveEntity(${entity} ${entity?uncap_first});
+
+    /**
+    * 更新
+    * @param ${entity?uncap_first}
+    *          实体
+    * @return  是否成功
+    */
+    Boolean updateEntity(${entity} ${entity?uncap_first});
+
+    /**
+    * 删除
+    * @param ids
+    *          主键
+    * @return  是否成功
+    */
+    Boolean delete(List<String> ids);
 }
 </#if>
