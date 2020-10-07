@@ -42,5 +42,10 @@ public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName
         IPage<${entity}> pageList = page(page, queryWrapper);
         return PageUtil.of(pageList.getRecords(),pageList.getTotal(),pageList.getSize(),pageList.getCurrent());
     }
+
+    @Override
+    public ${entity} info(String id) {
+        return getById(id);
+    }
 }
 </#if>

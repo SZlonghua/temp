@@ -24,5 +24,13 @@ public interface ${table.serviceName} extends BaseService<${entity}> {
     * @return  分页信息
     */
     PageUtil<${entity}> list(Query query);
+
+    /**
+    * 详情
+    * @param id
+    *          主键
+    * @return  详情
+    */
+    ${entity} info(String id);
 }
 </#if>

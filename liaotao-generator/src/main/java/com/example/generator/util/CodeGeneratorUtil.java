@@ -1,6 +1,7 @@
 package com.example.generator.util;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
@@ -58,6 +59,7 @@ public class CodeGeneratorUtil {
         gc.setSwagger2(true);   //开启swagger
         gc.setBaseColumnList(true);
         gc.setBaseResultMap(true);
+        gc.setIdType(IdType.INPUT);
 
         mpg.setGlobalConfig(gc);
 

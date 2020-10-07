@@ -1,6 +1,8 @@
 package com.example.generator.job.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,7 +16,7 @@ import com.example.commom.entity.BaseEntity;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-02
+ * @since 2020-10-07
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -24,6 +26,7 @@ public class SchedulerJob extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @ApiModelProperty(value = "主键")
+    @TableId(value = "job_id", type = IdType.INPUT)
     private String jobId;
     @ApiModelProperty(value = "任务名")
     private String taskName;

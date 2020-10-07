@@ -18,7 +18,7 @@ import org.apache.commons.lang.StringUtils;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-02
+ * @since 2020-10-07
  */
 @Service
 public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper, SchedulerJob> implements SchedulerJobService {
@@ -36,5 +36,10 @@ public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper,
 
         IPage<SchedulerJob> pageList = page(page, queryWrapper);
         return PageUtil.of(pageList.getRecords(),pageList.getTotal(),pageList.getSize(),pageList.getCurrent());
+    }
+
+    @Override
+    public SchedulerJob info(String id) {
+        return getById(id);
     }
 }

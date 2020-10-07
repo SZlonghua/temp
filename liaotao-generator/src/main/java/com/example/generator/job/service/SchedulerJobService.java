@@ -11,7 +11,7 @@ import com.example.commom.model.Query;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-02
+ * @since 2020-10-07
  */
 public interface SchedulerJobService extends BaseService<SchedulerJob> {
     /**
@@ -21,4 +21,12 @@ public interface SchedulerJobService extends BaseService<SchedulerJob> {
     * @return  分页信息
     */
     PageUtil<SchedulerJob> list(Query query);
+
+    /**
+    * 详情
+    * @param id
+    *          主键
+    * @return  详情
+    */
+    SchedulerJob info(String id);
 }

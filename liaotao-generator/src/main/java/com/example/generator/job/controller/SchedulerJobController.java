@@ -13,6 +13,9 @@ import com.example.commom.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * <p>
@@ -20,7 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-02
+ * @since 2020-10-07
  */
 @RestController
 @RequestMapping("/job/schedulerJob")
@@ -33,5 +36,14 @@ public class SchedulerJobController extends BaseController {
     @ApiOperation(value = "列表")
     public R<PageUtil<SchedulerJob>> list(Query query) {
         return R.ok(schedulerJobService.list(query));
+    }
+
+    @GetMapping("info/{id}")
+    @ApiOperation(value = "详情")
+    @ApiImplicitParams(value = {
+        @ApiImplicitParam(name = "id",value = "主键",required = true,dataType = "String")
+    })
+    public R<SchedulerJob> info(@PathVariable(value = "id") String id) {
+        return R.ok(schedulerJobService.info(id));
     }
 }
