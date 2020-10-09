@@ -12,6 +12,7 @@ import com.example.commom.model.PageUtil;
 import com.example.commom.model.Query;
 import org.apache.commons.lang.StringUtils;
 import java.util.List;
+import com.example.commom.util.UUIDUtil;
 
 /**
  * <p>
@@ -19,7 +20,7 @@ import java.util.List;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-07
+ * @since 2020-10-09
  */
 @Service
 public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper, SchedulerJob> implements SchedulerJobService {
@@ -46,6 +47,7 @@ public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper,
 
     @Override
     public Boolean saveEntity(SchedulerJob schedulerJob) {
+        schedulerJob.setJobId(UUIDUtil.getUUID());
         return save(schedulerJob);
     }
 

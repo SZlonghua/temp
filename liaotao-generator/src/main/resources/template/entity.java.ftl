@@ -13,6 +13,8 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 </#if>
 import com.example.commom.entity.BaseEntity;
+import javax.validation.constraints.NotBlank;
+import com.example.commom.valid.UpdateGroup;
 /**
  * <p>
  * ${table.comment!}
@@ -70,6 +72,7 @@ public class ${entity} extends BaseEntity implements Serializable {
     @TableId(value = "${field.name}", type = IdType.AUTO)
         <#elseif idType??>
     @TableId(value = "${field.name}", type = IdType.${idType})
+    @NotBlank(message = "主键不能为空",groups = UpdateGroup.class)
         <#elseif field.convert>
     @TableId("${field.name}")
         </#if>

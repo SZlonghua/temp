@@ -14,6 +14,10 @@ import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import org.springframework.validation.annotation.Validated;
+import com.example.commom.valid.AddGroup;
+import com.example.commom.valid.UpdateGroup;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * <p>
@@ -21,18 +25,19 @@ import java.util.List;
  * </p>
  *
  * @author liaotao
- * @since 2020-10-07
+ * @since 2020-10-09
  */
 @RestController
 @RequestMapping("/job/schedulerJob")
 @Api(tags = {"定时调度表"})
+@Validated
 public class SchedulerJobController extends BaseController {
     @Autowired
     SchedulerJobService schedulerJobService;
 
     @GetMapping("list")
     @ApiOperation(value = "列表")
-    public R<PageUtil<SchedulerJob>> list(Query query) {
+    public R<PageUtil<SchedulerJob>> list(@Validated Query query) {
         return R.ok(schedulerJobService.list(query));
     }
 
@@ -41,19 +46,19 @@ public class SchedulerJobController extends BaseController {
     @ApiImplicitParams(value = {
         @ApiImplicitParam(name = "id",value = "主键",required = true,dataType = "String")
     })
-    public R<SchedulerJob> info(@PathVariable(value = "id") String id) {
+    public R<SchedulerJob> info(@NotEmpty(message = "主键不能为空") @PathVariable(value = "id") String id) {
         return R.ok(schedulerJobService.info(id));
     }
 
     @PostMapping("/save")
     @ApiOperation(value = "保存")
-    public R<Boolean> save(@RequestBody SchedulerJob schedulerJob){
+    public R<Boolean> save(@Validated({AddGroup.class}) @RequestBody SchedulerJob schedulerJob){
         return R.ok(schedulerJobService.saveEntity(schedulerJob));
     }
 
     @PostMapping("/update")
     @ApiOperation(value = "更新")
-    public R<Boolean> update(@RequestBody SchedulerJob schedulerJob){
+    public R<Boolean> update(@Validated({UpdateGroup.class}) @RequestBody SchedulerJob schedulerJob){
         return R.ok(schedulerJobService.updateEntity(schedulerJob));
     }
 
@@ -62,7 +67,7 @@ public class SchedulerJobController extends BaseController {
     @ApiImplicitParams(value = {
         @ApiImplicitParam(name = "ids",value = "主键",required = true,dataType = "String",allowMultiple = true)
     })
-    public R<Boolean> delete(@RequestBody List<String> ids){
+    public R<Boolean> delete(@NotEmpty(message = "主键不能为空") @RequestBody List<String> ids){
         return R.ok(schedulerJobService.delete(ids));
     }
 }

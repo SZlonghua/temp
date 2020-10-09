@@ -21,6 +21,10 @@ import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import org.springframework.validation.annotation.Validated;
+import com.example.commom.valid.AddGroup;
+import com.example.commom.valid.UpdateGroup;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * <p>
@@ -43,6 +47,7 @@ class ${table.controllerName}<#if superControllerClass??> : ${superControllerCla
 public class ${table.controllerName} extends ${superControllerClass} {
 <#else>
 @Api(tags = {"${table.comment!}"})
+@Validated
 public class ${table.controllerName} extends BaseController {
 </#if>
     @Autowired
@@ -50,7 +55,7 @@ public class ${table.controllerName} extends BaseController {
 
     @GetMapping("list")
     @ApiOperation(value = "列表")
-    public R<PageUtil<${entity}>> list(Query query) {
+    public R<PageUtil<${entity}>> list(@Validated Query query) {
         return R.ok(${table.serviceName?uncap_first}.list(query));
     }
 
@@ -59,19 +64,19 @@ public class ${table.controllerName} extends BaseController {
     @ApiImplicitParams(value = {
         @ApiImplicitParam(name = "id",value = "主键",required = true,dataType = "String")
     })
-    public R<${entity}> info(@PathVariable(value = "id") String id) {
+    public R<${entity}> info(@NotEmpty(message = "主键不能为空") @PathVariable(value = "id") String id) {
         return R.ok(${table.serviceName?uncap_first}.info(id));
     }
 
     @PostMapping("/save")
     @ApiOperation(value = "保存")
-    public R<Boolean> save(@RequestBody ${entity} ${entity?uncap_first}){
+    public R<Boolean> save(@Validated({AddGroup.class}) @RequestBody ${entity} ${entity?uncap_first}){
         return R.ok(${table.serviceName?uncap_first}.saveEntity(${entity?uncap_first}));
     }
 
     @PostMapping("/update")
     @ApiOperation(value = "更新")
-    public R<Boolean> update(@RequestBody ${entity} ${entity?uncap_first}){
+    public R<Boolean> update(@Validated({UpdateGroup.class}) @RequestBody ${entity} ${entity?uncap_first}){
         return R.ok(${table.serviceName?uncap_first}.updateEntity(${entity?uncap_first}));
     }
 
@@ -80,7 +85,7 @@ public class ${table.controllerName} extends BaseController {
     @ApiImplicitParams(value = {
         @ApiImplicitParam(name = "ids",value = "主键",required = true,dataType = "String",allowMultiple = true)
     })
-    public R<Boolean> delete(@RequestBody List<String> ids){
+    public R<Boolean> delete(@NotEmpty(message = "主键不能为空") @RequestBody List<String> ids){
         return R.ok(schedulerJobService.delete(ids));
     }
 }

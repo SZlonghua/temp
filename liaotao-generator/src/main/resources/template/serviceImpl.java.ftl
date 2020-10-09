@@ -12,6 +12,7 @@ import com.example.commom.model.PageUtil;
 import com.example.commom.model.Query;
 import org.apache.commons.lang.StringUtils;
 import java.util.List;
+import com.example.commom.util.UUIDUtil;
 
 /**
  * <p>
@@ -51,6 +52,14 @@ public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName
 
     @Override
     public Boolean saveEntity(${entity} ${entity?uncap_first}) {
+    <#list table.fields as field>
+    <#-- 主键 -->
+        <#if field.keyFlag>
+            <#if field.keyIdentityFlag || idType?? || field.convert>
+        ${entity?uncap_first}.set${field.propertyName?cap_first}(UUIDUtil.getUUID());
+            </#if>
+        </#if>
+    </#list>
         return save(${entity?uncap_first});
     }
 

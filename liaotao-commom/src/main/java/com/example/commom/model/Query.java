@@ -3,8 +3,9 @@ package com.example.commom.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
-
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,9 +15,11 @@ public class Query implements Serializable {
     private static final long serialVersionUID = 1L;
     //当前页码,默认第一页
     @ApiModelProperty(value = "当前页码,默认第一页", required = true,example = "1")
+    @Min(value = 1,message = "当前页码最小值为1")
     private int page=1;
     //每页条数，默认每页10条
     @ApiModelProperty(value = "每页条数，默认每页10条", required = true,example= "10")
+    @Range(min = 1, max = 50,message = "每页条数在1到50之间")
     private int size=10;
     //排序方向
     @ApiModelProperty("排序方向")
