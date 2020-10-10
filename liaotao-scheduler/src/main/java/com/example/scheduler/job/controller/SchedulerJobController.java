@@ -1,10 +1,10 @@
-package com.example.generator.job.controller;
+package com.example.scheduler.job.controller;
 
 
-import com.example.generator.job.service.SchedulerJobService;
+import com.example.scheduler.job.service.SchedulerJobService;
 import com.example.commom.model.R;
 import com.example.commom.model.PageUtil;
-import com.example.generator.job.entity.SchedulerJob;
+import com.example.scheduler.job.entity.SchedulerJob;
 import com.example.commom.model.Query;
 import com.example.commom.controller.BaseController;
 import io.swagger.annotations.Api;

@@ -1,4 +1,4 @@
-package com.example.generator.job.entity;
+package com.example.scheduler.job.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;

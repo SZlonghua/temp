@@ -1,9 +1,9 @@
-package com.example.generator.job.service.impl;
+package com.example.scheduler.job.service.impl;
 
 import com.example.commom.service.impl.BaseServiceImpl;
-import com.example.generator.job.entity.SchedulerJob;
-import com.example.generator.job.mapper.SchedulerJobMapper;
-import com.example.generator.job.service.SchedulerJobService;
+import com.example.scheduler.job.entity.SchedulerJob;
+import com.example.scheduler.job.mapper.SchedulerJobMapper;
+import com.example.scheduler.job.service.SchedulerJobService;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;

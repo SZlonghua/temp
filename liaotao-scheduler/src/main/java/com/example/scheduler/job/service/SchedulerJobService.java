@@ -1,6 +1,6 @@
-package com.example.generator.job.service;
+package com.example.scheduler.job.service;
 
-import com.example.generator.job.entity.SchedulerJob;
+import com.example.scheduler.job.entity.SchedulerJob;
 import com.example.commom.service.BaseService;
 import com.example.commom.model.PageUtil;
 import com.example.commom.model.Query;

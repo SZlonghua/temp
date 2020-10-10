@@ -24,7 +24,7 @@ public class CodeGeneratorUtil {
     //设置作者
     private final static String author = "liaotao";
     //设置包名
-    private final static String packageName = "com.example.generator";
+    private final static String packageName = "com.example.scheduler";
     //设置模块名
     private final static String moduleName = "job";
     //设置数据库要生成代码的表名
@@ -32,7 +32,7 @@ public class CodeGeneratorUtil {
     //文件覆盖:true 覆盖原有文件 false 不覆盖原有文件
     private final static boolean fileOverride = true;
     //设置数据库url
-    private final static String url = "jdbc:mysql://127.0.0.1:3306/liaotao-eaxm?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC";
+    private final static String url = "jdbc:mysql://127.0.0.1:3306/liaotao-eaxm?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai";
     //设置数据库驱动
     //private final static String driverName = "org.mariadb.jdbc.Driver";
     private final static String driverName = "com.mysql.jdbc.Driver";
@@ -41,7 +41,7 @@ public class CodeGeneratorUtil {
     //设置数据库密码
     private final static String password = "root";
     //设置数据库密码
-    private final static String projectPath = System.getProperty("user.dir")+"/liaotao-generator";
+    private final static String projectPath = System.getProperty("user.dir")+"/liaotao-scheduler";
 
     public static void main(String[] args) {
         // 代码生成器

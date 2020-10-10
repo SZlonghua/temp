@@ -1,6 +1,6 @@
-package com.example.generator.job.mapper;
+package com.example.scheduler.job.mapper;
 
-import com.example.generator.job.entity.SchedulerJob;
+import com.example.scheduler.job.entity.SchedulerJob;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
