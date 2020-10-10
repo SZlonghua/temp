@@ -70,4 +70,44 @@ public class SchedulerJobController extends BaseController {
     public R<Boolean> delete(@NotEmpty(message = "主键不能为空") @RequestBody List<String> ids){
         return R.ok(schedulerJobService.delete(ids));
     }
+
+
+    /**
+     * 立即执行任务
+     */
+    @PostMapping("/run")
+    @ApiOperation(value = "立即执行任务")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "jobIds",value = "主键",required = true,dataType = "String",allowMultiple = true)
+    })
+    public R run(@NotEmpty(message = "主键不能为空") @RequestBody List<String> jobIds){
+        schedulerJobService.run(jobIds);
+        return R.ok();
+    }
+
+    /**
+     * 暂停定时任务
+     */
+    @PostMapping("/pause")
+    @ApiOperation(value = "暂停定时任务")
+    @ApiImplicitParams(value = {
+        @ApiImplicitParam(name = "jobIds",value = "主键",required = true,dataType = "String",allowMultiple = true)
+    })
+    public R pause(@NotEmpty(message = "主键不能为空") @RequestBody List<String> jobIds){
+        schedulerJobService.pause(jobIds);
+        return R.ok();
+    }
+
+    /**
+     * 恢复定时任务
+     */
+    @PostMapping("/resume")
+    @ApiOperation(value = "恢复定时任务")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "jobIds",value = "主键",required = true,dataType = "String",allowMultiple = true)
+    })
+    public R resume(@NotEmpty(message = "主键不能为空") @RequestBody List<String> jobIds){
+        schedulerJobService.resume(jobIds);
+        return R.ok();
+    }
 }

@@ -22,4 +22,12 @@
         job_id, task_name, task_group, execute_class, cron, description, state, create_on, create_by, modified_on, modified_by
     </sql>
 
+    <!-- 批量更新状态 -->
+    <update id="updateBatch">
+        update schedule_job set state = #{state} where job_id in
+        <foreach item="jobId" collection="jobIds"  open="(" separator="," close=")">
+            #{jobId}
+        </foreach>
+    </update>
+
 </mapper>
