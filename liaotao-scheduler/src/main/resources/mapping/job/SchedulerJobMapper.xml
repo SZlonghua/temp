@@ -24,7 +24,7 @@
 
     <!-- 批量更新状态 -->
     <update id="updateBatch">
-        update schedule_job set state = #{state} where job_id in
+        update scheduler_job set state = #{state} where job_id in
         <foreach item="jobId" collection="jobIds"  open="(" separator="," close=")">
             #{jobId}
         </foreach>

@@ -6,6 +6,7 @@ import com.example.scheduler.job.entity.SchedulerJob;
 import com.example.scheduler.job.mapper.SchedulerJobMapper;
 import com.example.scheduler.job.service.SchedulerJobService;
 import com.example.scheduler.job.util.ScheduleUtils;
+import org.quartz.CronTrigger;
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ import java.util.Map;
 import com.example.commom.util.UUIDUtil;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
+
 /**
  * <p>
  * 定时调度表 服务实现类
@@ -36,6 +39,20 @@ public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper,
 
     @Autowired
     private Scheduler scheduler;
+
+    @PostConstruct
+    public void init(){
+        List<SchedulerJob> scheduleJobList = baseMapper.selectList(null);
+        for(SchedulerJob scheduleJob : scheduleJobList){
+            CronTrigger cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.getJobId());
+            //如果不存在，则创建
+            if(cronTrigger == null) {
+                ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
+            }else {
+                ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
+            }
+        }
+    }
 
     @Override
     public PageUtil<SchedulerJob> list(Query query) {
@@ -104,7 +121,7 @@ public class SchedulerJobServiceImpl extends BaseServiceImpl<SchedulerJobMapper,
     @Override
     public void resume(List<String> jobIds) {
         for(String jobId : jobIds){
-            ScheduleUtils.pauseJob(scheduler, jobId);
+            ScheduleUtils.resumeJob(scheduler, jobId);
         }
         updateBatch(jobIds, ScheduleStatus.NORMAL.getValue());
     }
