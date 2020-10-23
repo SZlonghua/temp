@@ -1,8 +1,14 @@
 package com.example.scheduler;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.buffer.Unpooled;
+import org.apache.tomcat.util.buf.ByteBufferUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -53,6 +59,36 @@ public class LiaotaoSchedulerApplicationTests {
             }else System.out.println("wancehng");
 
         }
+    }
+
+    @Test
+    public void Di2() {
+        Integer readIndex= 3;
+        byte b = readIndex.byteValue();
+
+
+
+       /* System.out.println((char) 0x33);
+        System.out.println();*/
+
+        ByteBuf byteBuf = Unpooled.buffer();
+        byteBuf.writeBytes("003".getBytes());
+        byteBuf.writeBytes("A".getBytes(Charset.defaultCharset()));
+
+
+
+
+        System.out.println(ByteBufUtil.prettyHexDump(byteBuf));
+
+        byte[] v = new byte[4];
+        byteBuf.readBytes(v);
+
+        System.out.println(new String(v).toString());
+
+        //char c1 = byteBuf.readChar();
+        //System.out.println("c:"+c+" c1:"+c1);
+
+
     }
 
 

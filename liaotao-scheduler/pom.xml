@@ -81,6 +81,10 @@
             <version>2.3.2</version>
             <scope>test</scope>
         </dependency>-->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
